@@ -1,0 +1,59 @@
+{
+  "splits": {
+    "train": {
+      "total": 584,
+      "per_class": {
+        "BA- cellulitis": 87,
+        "BA-impetigo": 51,
+        "FU-athlete-foot": 79,
+        "FU-nail-fungus": 84,
+        "FU-ringworm": 58,
+        "PA-cutaneous-larva-migrans": 62,
+        "VI-chickenpox": 81,
+        "VI-shingles": 82
+      }
+    },
+    "validation": {
+      "total": 314,
+      "per_class": {
+        "BA- cellulitis": 46,
+        "BA-impetigo": 28,
+        "FU-athlete-foot": 43,
+        "FU-nail-fungus": 45,
+        "FU-ringworm": 32,
+        "PA-cutaneous-larva-migrans": 33,
+        "VI-chickenpox": 42,
+        "VI-shingles": 45
+      }
+    },
+    "test": {
+      "total": 234,
+      "per_class": {
+        "BA- cellulitis": 34,
+        "BA-impetigo": 20,
+        "FU-athlete-foot": 32,
+        "FU-nail-fungus": 33,
+        "FU-ringworm": 23,
+        "PA-cutaneous-larva-migrans": 25,
+        "VI-chickenpox": 34,
+        "VI-shingles": 33
+      }
+    }
+  },
+  "classes": [
+    "BA- cellulitis",
+    "BA-impetigo",
+    "FU-athlete-foot",
+    "FU-nail-fungus",
+    "FU-ringworm",
+    "PA-cutaneous-larva-migrans",
+    "VI-chickenpox",
+    "VI-shingles"
+  ],
+  "corrupt_files": [],
+  "duplicates_within_split": 10,
+  "leakage_across_splits": [],
+  "total_images": 1132,
+  "errors": [],
+  "warnings": []
+}

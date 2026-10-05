@@ -1,0 +1,39 @@
+version: "3.9"
+
+services:
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend/models:/app/models
+      - ./backend/uploads:/app/uploads
+      - ./backend/dataset:/app/dataset
+    environment:
+      - DATABASE_URL=sqlite:///./smartskin.db
+      - SECRET_KEY=${SECRET_KEY:?set SECRET_KEY in your shell or .env}
+      - MODEL_PATH=./models/skin_model.keras
+      - CLASS_LABELS_PATH=./models/class_labels.json
+      - CONFIDENCE_THRESHOLD=0.60
+      - MAX_UPLOAD_SIZE_MB=5
+      - IMAGE_SIZE=224
+      - UPLOAD_DIR=./uploads
+      - CORS_ORIGINS=http://localhost:5173,http://localhost:3000
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000
+
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "5173:5173"
+    environment:
+      - VITE_API_BASE_URL=http://localhost:8000
+    depends_on:
+      - backend
+    command: npm run dev -- --host
+
+# Note: no Dockerfiles are included by default (this is an academic project
+# normally run locally per the README). Add backend/Dockerfile and
+# frontend/Dockerfile (standard python:3.11-slim / node:18-alpine images)
+# if you want to run this stack via `docker compose up`.
